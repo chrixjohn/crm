@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'master'
 ]
 
-# AUTH_USER_MODEL = 'accounts.Student'
+AUTH_USER_MODEL = 'master.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

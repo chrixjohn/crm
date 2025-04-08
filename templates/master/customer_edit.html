@@ -5,8 +5,14 @@
     <h2>Edit Customer</h2>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Update</button>
+        <label for="">Name</label>
+        {{ form.name }} 
+        <br>
+        {{ form.email }}
+        {{ form.phone }}
+        {{ form.address }}
+        <input type='submit'>
+        
         <a href="{% url 'customer_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>

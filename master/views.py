@@ -1,22 +1,18 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.utils import timezone
 from django.contrib import messages
-from .forms import *
 from .models import Customer
+from .forms import *
 
-
+# Create your views here.
 
 class CustomerList(ListView):
     model = Customer
     template_name = "master/customer_list.html"
 
     def get(self, request, *args, **kwargs):
-        #customer_list = Customer.objects.filter(company_id=request.user.company_id)
+        #customer_list = Customer.objects.filter(customer_id=request.user.company_id)
         customer_list= Customer.objects.all()
         context = {'customer_list': customer_list}
         return render(request, self.template_name, context)
@@ -31,8 +27,8 @@ def customer_add(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             data = form.save(commit=False)
-            #data.create_user = request.user
-            #data.company_id = request.user.company_id
+            data.create_user = request.user
+            data.company_id = request.user.company_id
             data.save()
             messages.success(request, 'Customer Details Added Successfully', 'alert-success')
             return redirect('customer_list')
@@ -54,6 +50,7 @@ def customer_edit(request, pk):
         if form.is_valid():
             data = form.save(commit=False)
             data.updated_user = str(request.user)
+            data.company_id = request.user.company_id
             data.updated_at = timezone.now()
             data.save()
             messages.success(request, 'Customer Details Updated Successfully', 'alert-success')

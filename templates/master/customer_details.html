@@ -12,6 +12,26 @@
             <th>Name</th>
             <td>{{ customer.name }}</td>
         </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+            <th>create_user</th>
+            <td>{{ customer.create_user }}</td>
+        </tr>
+        <tr>
+            <th>updated_user</th>
+            <td>{{ customer.create_user }}</td>
+        </tr>
+        <tr>
+            <th>updated_at</th>
+            <td>{{ customer.updated_at }}</td>
+        </tr>
+        <tr>
+            <th>company_id</th>
+            <td>{{ customer.company_id }}</td>
+        </tr>
     </table>
     <a href="{% url 'customer_list' %}" class="btn btn-secondary">Back to List</a>
 </div>
