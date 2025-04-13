@@ -9,20 +9,25 @@ from .forms import *
 
 class CustomerList(ListView):
     model = Customer
-    template_name = "master/customer_list.html"
+    template_name = "table.html"
 
     def get(self, request, *args, **kwargs):
         #customer_list = Customer.objects.filter(customer_id=request.user.company_id)
         customer_list= Customer.objects.all()
+        print(customer_list)
         context = {'customer_list': customer_list}
         return render(request, self.template_name, context)
 
 
+def daashboard(request):
+    template_name= "base.html"
+    context={}
+    return render(request, template_name, context)
 
 def customer_add(request):
     form = CustomerForm()
     context = {'form': form}
-    template_name = "master/customer_add.html"
+    template_name = "add.html"
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if form.is_valid():

@@ -22,6 +22,11 @@ class Customer(models.Model):
 class CustomUser(AbstractUser):  
     company = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
 
+
+
+
+    
+
 # class Employee(models.Model):
 #     first_name = models.CharField(max_length=100)
 #     middle_name = models.CharField(max_length=100, blank=True, null=True)
