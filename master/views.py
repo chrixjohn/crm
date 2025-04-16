@@ -18,7 +18,7 @@ class CustomerList(ListView):
         context = {'customer_list': customer_list}
         return render(request, self.template_name, context)
 
-
+#decorator
 def daashboard(request):
     template_name= "base.html"
     context={}
@@ -49,7 +49,7 @@ def customer_edit(request, pk):
     customer = Customer.objects.get(customer_id=pk)
     form = CustomerForm(instance=customer)
     context = {'form': form, 'customer': customer}
-    template_name = "master/customer_edit.html"
+    template_name = "edit.html"
     if request.method == 'POST':
         form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
@@ -69,11 +69,11 @@ def customer_edit(request, pk):
 
 
 class CustomerDetails(TemplateView):
-    model = Customer
+    model = Customer #no need to add this line
     template_name = "master/customer_details.html"
 
     def get(self, request, *args, **kwargs):
         customer_id = self.kwargs.get('pk')
-        customer = Customer.objects.get(customer_id=customer_id)
+        customer = Customer.objects.get(customer_id=customer_id)  # customer_id=customer_id change this
         context = {'customer': customer}
         return render(request, self.template_name, context)

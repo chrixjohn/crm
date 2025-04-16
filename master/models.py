@@ -19,7 +19,7 @@ class Customer(models.Model):
         return f"{self.name} | {self.customer_id}"
 
 
-class CustomUser(AbstractUser):  
+class CustomUser(AbstractUser):  # add this in accounts app
     company = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
 
 

@@ -1,0 +1,5 @@
+go Back js script code
+
+<input type=button class="btn btn-outline-warning" 
+value="Back" onClick="javascript:history.go(-1);"
+                       style="margin-top: 10px;">
